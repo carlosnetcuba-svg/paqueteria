@@ -15,3 +15,4 @@ createRoot(document.getElementById('root')!).render(
     </GlobalContextProvider>
   </StrictMode>,
 )
+//TODO NO PERMITIR EN LA BASE DE DATOS POLICI CREAR USUARIO SIGN UP

@@ -49,13 +49,14 @@ export const GlobalContextProvider=({children})=>{
             email: correo,
             password: clave,
             })
-             
+           
             console.log("VISALIZANDO EN EL CONTEXTOini")
+             console.dir(correo)
+            console.dir(clave)
            console.dir(error)
             console.dir(data)
              console.log("VISALIZANDO EN EL CONTEXTOfin")
-             return {error:error?.message,
-                data}
+             return {error:error?.message,data:data}
 
     }
         catch(errorc){
@@ -74,7 +75,7 @@ export const GlobalContextProvider=({children})=>{
         try{
         const {error}= await supabasecl.auth.signOut()
             if(error){return error.message}
-            else {return null}
+            else {return ""}
     }
         catch(errorc){
             console.log("cerrarsession catch",errorc)
