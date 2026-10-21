@@ -1,10 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+
 import './index.css'
-import App from './App.tsx'
+import { RouterProvider } from 'react-router-dom'
+
+import { GlobalContextProvider } from './context/context.tsx'
+import { myrouter } from './router.tsx'
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <GlobalContextProvider>
+     <RouterProvider router={myrouter}></RouterProvider>
+    </GlobalContextProvider>
   </StrictMode>,
 )

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Navigate, } from 'react-router-dom'
-import { useGlobal } from './context/context'
+
 
 
 const RootRedirect = () => {
 
-
+/*
     const {session}=useGlobal()
     console.log("El valor de la secion es ",session)
     if(session===undefined){
@@ -19,8 +19,8 @@ const RootRedirect = () => {
      <Navigate to={"/signin"}></Navigate>
      
       ;
-
-
+*/
+return <h1>REDIRECCIONANDO</h1>
     }
 
 
@@ -28,8 +28,5 @@ const RootRedirect = () => {
 
 
 
-
-
-}
 
 export default RootRedirect;
