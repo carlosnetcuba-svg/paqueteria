@@ -7,6 +7,7 @@ import supabasecl from "@/context/supabasecl";
 
 
 
+
 export const  Supabasequeries={
    
 addPet: async (name:string,age:number,weight:number)=>{
@@ -53,27 +54,26 @@ ModificarEtapasDelGrupo: async (grupo:string,etapa:number)=>{
 
   try{
   console.log("Modificando todos los paquetes del grupo Ejecutando")
-const { data: paquetes, error: errorLectura } = await supabasecl
-  .from('paquete').select('id, grupo!inner(nombre)').eq('grupo.nombre', grupo)
+const { data: paquetes, error: errorLectura } = await supabasecl.from('paquete').select('id, grupo!inner(nombre)').eq('grupo.nombre', grupo)
 
   console.log("filtrado los paquetes en ese grupo:",paquetes)
 if (errorLectura) throw errorLectura
 
 const ids = paquetes.map((paquete) => paquete.id)
 
-if (ids.length > 0) {
-  const { data, error } = await supabasecl
-    .from('paquete').update({ etapa: etapa }).in('id', ids).select()
 
-  if (error) throw error
-  else{
+if(ids.length==0){return {error:"No se encontraron paquetes"}}
+else  {
+  const { data, error } = await supabasecl .from('paquete').update({ etapa: etapa }).in('id', ids).select()
+
+  if (error) {throw error}
     return { data, error }
-  }
+
   }
 }
   catch(e){
     console.error(e)
-     return {error:"Catch Error"}
+     return {error:"Catch Error here"}
   }
     
 },

@@ -6,6 +6,7 @@ import { RouterProvider } from 'react-router-dom'
 
 import { GlobalContextProvider } from './context/context.tsx'
 import { myrouter } from './router.tsx'
+import { Toaster } from './components/ui/toast.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')!).render(
     <GlobalContextProvider>
      <RouterProvider router={myrouter}></RouterProvider>
     </GlobalContextProvider>
+  <Toaster></Toaster>
   </StrictMode>,
 )
 //TODO NO PERMITIR EN LA BASE DE DATOS POLICI CREAR USUARIO SIGN UP

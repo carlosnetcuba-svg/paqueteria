@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-
+import { toast } from "@/components/ui/toast"
 import {
   Select,
   SelectContent,
@@ -19,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-
+import { useState } from "react"
 import { Field, FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -35,6 +35,8 @@ import { Supabasequeries } from "@/context/queries"
 
 export function FormBulto() {
 
+  
+  const [open, setOpen] = useState(false)
   const [errorState,FormAction,isPending]= useActionState(
 
 
@@ -60,6 +62,26 @@ export function FormBulto() {
 
 console.log("DATA:",data)
 console.log("ERROR:",error)
+
+setOpen(false)
+
+if(data){
+  toast.add({
+  title: "Tarea completada",
+  description: `Se actualizaron ${data.length} paquete(s)` ,
+})
+}
+if(error){
+  toast.add({
+  title: "Error",
+description: typeof error === "string" ? error :"Ha ocurrido un error"
+
+})
+}
+
+
+
+
       
       return  ""}
   }catch(e){
@@ -73,7 +95,7 @@ console.log("ERROR:",error)
 )
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       
         <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} />
         <DialogContent className="sm:max-w-sm">
