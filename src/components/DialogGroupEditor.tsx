@@ -33,7 +33,7 @@ import { Supabasequeries } from "@/context/queries"
 
 
 
-export function FormBulto() {
+export function DialogGroupEditor() {
 
   
   const [open, setOpen] = useState(false)
@@ -95,9 +95,9 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
 )
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog   open={open} onOpenChange={setOpen}>
       
-        <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} />
+        <DialogTrigger render={<Button className="m-3" variant="outline">Entrar</Button>} />
         <DialogContent className="sm:max-w-sm">
           <form action={FormAction}>
           <DialogHeader>
@@ -109,7 +109,7 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Identificador del grupo/bulto</Label>
-              <Input id="name-1" name="grupoid" placeholder="b4432" />
+              <Input id="name-1" name="grupoid" placeholder="grupo01" />
             </Field>
             <Field>
               <Label htmlFor="username-1">Etapas</Label>
@@ -131,8 +131,8 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
             </Field>
           </FieldGroup>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline">Cancel</Button>} />
-            <Button type="submit">Aceptar</Button>
+            <DialogClose render={<Button disabled={isPending} variant="outline">Cancel</Button>} />
+            <Button disabled={isPending} type="submit">Aceptar</Button >
           </DialogFooter>
              </form>
         </DialogContent>

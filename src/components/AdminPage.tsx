@@ -1,7 +1,17 @@
 import React, { useState } from 'react'
 import Navbar from './AdminNavbar'
-import { FormBulto } from './FormGrupo'
-import { Supabasequeries } from '@/context/queries'
+import { DialogGroupEditor } from './DialogGroupEditor'
+import { DialogPkgEditorEtapa } from './DialogPkgEditorEtapa'
+import { PencilSparkles } from "lucide-react"
+
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item"
+
 const AdminPage = () => {
   
   
@@ -44,8 +54,52 @@ const AdminPage = () => {
 
     
         
-      <div className='flex'>
+      <div className='grid gap-3'>
+
+
+
+
+
+
+
+
+
+
+
 <ul>
+     <Item variant="outline">
+        <ItemMedia variant="icon">
+      <PencilSparkles />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Editar por grupo</ItemTitle>
+          <ItemDescription>
+        <DialogGroupEditor></DialogGroupEditor>
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+       <Item variant="outline">
+        <ItemMedia variant="icon">
+      <PencilSparkles />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Editar por paquete</ItemTitle>
+          <ItemDescription>
+        <DialogPkgEditorEtapa></DialogPkgEditorEtapa>
+          </ItemDescription>
+        </ItemContent>
+      </Item>
+       <Item variant="outline">
+        <ItemMedia variant="icon">
+      <PencilSparkles />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Editar por grupo</ItemTitle>
+          <ItemDescription>
+        <DialogGroupEditor></DialogGroupEditor>
+          </ItemDescription>
+        </ItemContent>
+      </Item>
   <li><button className='hover:cursor-pointer' onClick={handleIdBultoClick}>Cambiar etapa por identificador de bulto </button></li>
    <li><button className='hover:cursor-pointer' onClick={handle1PaqueteClick}>Cambiar etapa de un solo paquete de paquete </button></li>
    <li><button className='hover:cursor-pointer' onClick={handleSubirTablaClick}>Subir datos de tabla </button></li>
@@ -54,7 +108,7 @@ const AdminPage = () => {
 
     <li><button className='hover:cursor-pointer' onClick={handlePrueba} >Probar Funcion query </button></li>
 
-<li><FormBulto></FormBulto></li>
+<li></li>
 </ul>
 
 

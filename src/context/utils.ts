@@ -15,4 +15,5 @@ export const  etapas :Etapa[] = [
   { label: "Almacen Central en Cuba", value: 60 },
   { label: "Reparticion ", value: 70 },
   { label: "Entrega ", value: 80 },
+  { label: "Borrar de la nube", value: 500 },
 ]

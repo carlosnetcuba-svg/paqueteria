@@ -29,6 +29,26 @@ const {data,error} = await supabasecl
     return data;
 }
 ,
+//PROBADA FUNCIONA BIEN
+ObtenerTodosPaquetesDelGrupo: async (grupo:string)=>{
+
+  console.log("ObtenerTodosPaquetesDelGrupo Ejecutando")
+  try{
+const { data, error } = await supabasecl
+  .from('paquete')
+  .select('*, grupo!inner(nombre)')
+  .eq('grupo.nombre', grupo)
+   if(data){console.log("datos resultantes",data)}
+   if(error){console.error("ocurrio error",error)}
+   return {data,error};
+   }
+   catch(e){
+    console.log(e,"Catch Error" )
+    return {error:"Catch Error"}
+   }
+},
+
+
 
 ObtenerTodosPaquetesDelGrupo: async (grupo:string)=>{
 
@@ -46,10 +66,15 @@ const { data, error } = await supabasecl
     console.log(e,"Catch Error" )
     return {error:"Catch Error"}
    }
-  
-    
 },
 
+
+
+
+
+
+
+//PROBADA FUNCIONA BIEN
 ModificarEtapasDelGrupo: async (grupo:string,etapa:number)=>{
 
   try{
@@ -78,7 +103,20 @@ else  {
     
 },
 
+//PROBADA FUNCIONA BIEN
+ModificarEtapasDelPaquete: async (paquete:string,etapa:number)=>{
 
+  try{
+  console.log("ModificarEtapasDelPaquete Ejecutando")
+ const  { data, error } = await supabasecl.from('paquete').update({ etapa:etapa}).eq("realid",paquete).select()
+return { data, error }
+}
+  catch(e){
+    console.error(e)
+     return {error:"Catch Error here",data:""}
+  }
+    
+},
 
 
 
