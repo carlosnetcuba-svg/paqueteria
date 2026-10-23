@@ -17,3 +17,24 @@ export const  etapas :Etapa[] = [
   { label: "Entrega ", value: 80 },
   { label: "Borrar de la nube", value: 500 },
 ]
+
+
+async function parseFile(file: File): Promise<string[]> {
+
+  try{
+  const text = await file.text();
+
+  return text
+    .replace(/[,;.]/g, " ")      // coma, punto y coma y punto → espacio
+    .replace(/\s+/g, " ")        // saltos de línea y espacios múltiples → 1 espacio
+    .trim()                      // quita espacio al inicio/fin
+    .split(" ")                  // separa por espacio
+    .filter(Boolean);            // elimina vacíos (por seguridad)
+}catch(e){
+  console.log("parseFileError",e)
+  return []
+}
+
+  }
+
+export default parseFile;

@@ -3,6 +3,8 @@ import Navbar from './AdminNavbar'
 import { DialogGroupEditor } from './DialogGroupEditor'
 import { DialogPkgEditorEtapa } from './DialogPkgEditorEtapa'
 import { PencilSparkles } from "lucide-react"
+import PrepareFile from './PrepareFile'
+import Attach from './Attach'
 
 import {
   Item,
@@ -51,7 +53,7 @@ const AdminPage = () => {
     
     <div>
     <Navbar></Navbar>
-
+    <PrepareFile></PrepareFile>
     
         
       <div className='grid gap-3'>
@@ -94,9 +96,9 @@ const AdminPage = () => {
       <PencilSparkles />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Editar por grupo</ItemTitle>
+          <ItemTitle>Subir archivo txt</ItemTitle>
           <ItemDescription>
-        <DialogGroupEditor></DialogGroupEditor>
+        <Attach></Attach>
           </ItemDescription>
         </ItemContent>
       </Item>
