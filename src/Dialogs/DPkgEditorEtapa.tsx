@@ -35,7 +35,7 @@ import { InboxIcon } from "lucide-react"
 
 
 
-export function DialogPkgEditorEtapa() {
+export function DPkgEditorEtapa() {
 
   
   const [open, setOpen] = useState(false)

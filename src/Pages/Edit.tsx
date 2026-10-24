@@ -1,6 +1,6 @@
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@/components/ui/item'
-import { DialogGroupEditor } from '@/Dialogs/DialogGroupEditor'
-import { DialogPkgEditorEtapa } from '@/Dialogs/DialogPkgEditorEtapa'
+import { DGroupEditor } from '@/Dialogs/DGroupEditor'
+import { DPkgEditorEtapa } from '@/Dialogs/DPkgEditorEtapa'
 import { PencilSparkles } from 'lucide-react'
 import React from 'react'
 
@@ -10,9 +10,9 @@ const Edit = () => {
       <div className='grid gap-3'>
 
 <ul className='flex flex-col gap-3 sm:gap-6'>
-      <DialogGroupEditor></DialogGroupEditor>
+      <DGroupEditor></DGroupEditor>
 
-      <DialogPkgEditorEtapa></DialogPkgEditorEtapa>
+      <DPkgEditorEtapa></DPkgEditorEtapa>
 </ul>
 
 

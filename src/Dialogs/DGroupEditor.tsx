@@ -35,7 +35,7 @@ import { InboxIcon } from "lucide-react"
 
 
 
-export function DialogGroupEditor() {
+export function DGroupEditor() {
 
   
   const [open, setOpen] = useState(false)
