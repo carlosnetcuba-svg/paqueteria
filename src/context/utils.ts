@@ -1,9 +1,16 @@
 
-
+export type PaqueteI = {
+  id: number
+  etapa: Etapa
+  realid:string
+  grupo:string
+}
 export type Etapa = {
   label: string
   value: number
 }
+
+export const EtapaToLabel=(n:number)=>{return etapas.find((e) => e.value === n)?.label ?? String(n);}
 
 export const  etapas :Etapa[] = [
 

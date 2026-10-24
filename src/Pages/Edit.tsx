@@ -1,8 +1,10 @@
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@/components/ui/item'
 import { DGroupEditor } from '@/Dialogs/DGroupEditor'
 import { DPkgEditorEtapa } from '@/Dialogs/DPkgEditorEtapa'
+import { DGroupCreate } from '@/Dialogs/DGroupCreate'
 import { PencilSparkles } from 'lucide-react'
 import React from 'react'
+import { DGroupDel } from '@/Dialogs/DGroupDel'
 
 const Edit = () => {
   return (
@@ -13,6 +15,10 @@ const Edit = () => {
       <DGroupEditor></DGroupEditor>
 
       <DPkgEditorEtapa></DPkgEditorEtapa>
+      <DGroupCreate></DGroupCreate>
+      <DGroupDel></DGroupDel>
+
+      
 </ul>
 
 

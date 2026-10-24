@@ -55,15 +55,15 @@ const { data, error } = await supabasecl
 
 
 
-ObtenerTodosPaquetesDelGrupo: async (grupo:string)=>{
+ObtenerTodosPaquetes: async ()=>{
 
   console.log("ObtenerTodosPaquetesDelGrupo Ejecutando")
   try{
 const { data, error } = await supabasecl
   .from('paquete')
   .select('*, grupo!inner(nombre)')
-  .eq('grupo.nombre', grupo)
-   if(data){console.log("datos resultantes",data)}
+  
+   //if(data){console.log("datos resultantes",data)}
    if(error){console.error("ocurrio error",error)}
    return {data,error};
    }
@@ -140,6 +140,32 @@ SubirMultiplesPaquetes: async (paquetes:string[],etapa:number,grupo:string)=>{
   }
     
 },
+CrearUnGrupo:async (grupo:string)=>{
+
+try{
+console.log("CrearUnGrupo")
+const  { data, error } = await supabasecl.from('grupo').insert({nombre:grupo}).select()
+ return  { data, error }
+}catch(e){
+  console.error(e)
+     return {error:"Catch Error here",data:""}
+}
+ 
+},
+
+EliminaGrupo:async (grupo:string)=>{
+
+try{
+console.log("EliminaGrupo")
+const  { data,error } = await supabasecl.from('grupo').delete().eq('nombre', grupo).select()
+console.log( data,error)
+ return  { data:"", error:"" }
+}catch(e){
+  console.error(e)
+     return {error:"Catch Error here",data:""}
+}
+ 
+}
 
 
 

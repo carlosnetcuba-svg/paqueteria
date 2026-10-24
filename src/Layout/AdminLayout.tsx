@@ -7,9 +7,10 @@ export default function AdminLayout() {
   return (
     <div>
       <Navbar />             
-      <main>
+      <main className=' p-4 sm:p-10 '>
         <Outlet />           
       </main>
     </div>
   );
 }
+

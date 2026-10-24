@@ -7,7 +7,7 @@ import { SignIn } from "./components/SignIn"
 import Edit from "./Pages/Edit"
 import AdminLayout from "./Layout/AdminLayout"
 import Subir from "./Pages/Subir"
-
+import Dash from "./Pages/Dash"
 
 
 
@@ -23,7 +23,7 @@ export const myrouter=createBrowserRouter([
     children: [
       { index: true, element: <Edit /> },   // /admin
       { path: "upload", element: <Subir /> },     // /admin/users
-      { path: "dash", element: <Edit /> } // /admin/settings
+      { path: "dash", element: <Dash /> } // /admin/settings
     ],
   },
     {path:"/trace", element:<></>},

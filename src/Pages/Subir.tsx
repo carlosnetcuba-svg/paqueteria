@@ -57,7 +57,7 @@ const Subir = () => {
   }
  
   return (
-    <div className=' p-4 sm:p-10 '>
+    <div >
         
 
 {pkgProcesados.length==0?(<div><label 
