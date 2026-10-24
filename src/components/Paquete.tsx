@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Paquete.css"
 const Paquete = ({nombre,labeltext}:{nombre:string,labeltext:string}) => {
-    console.log("paquete",nombre)
+   
 
   return (
    <div className="pkg_card">

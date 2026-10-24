@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from 'react'
+
 import { EtapaToLabel } from '@/context/utils'
 import Paquete from '@/components/Paquete'
-import { Supabasequeries } from '@/context/queries'
+import { useOutletContext } from 'react-router-dom';
+
+
+
 const Dash = () => {
 
-    const [paquetes,Setpaquetes]=useState([])
-
-
-    useEffect(()=>{  
-        
-        async function hacerFetch(){
-
-            const {error,data}=await Supabasequeries.ObtenerTodosPaquetes()    
-          if(error){alert("Ha ocurrido un error")}
-          else if(data){
-            Setpaquetes(data)
-          }
-          console.log("useEffect",error,data)
-        }
-        hacerFetch()
-
-       },[])
-
+const { paquetes } = useOutletContext<{ paquetes }>();
+  
   return (
     <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
   

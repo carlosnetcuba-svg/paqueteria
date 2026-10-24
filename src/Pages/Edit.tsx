@@ -8,7 +8,7 @@ import { DGroupDel } from '@/Dialogs/DGroupDel'
 
 const Edit = () => {
   return (
-       <div className=' p-6 sm:p-10 '>
+       <div >
       <div className='grid gap-3'>
 
 <ul className='flex flex-col gap-3 sm:gap-6'>
