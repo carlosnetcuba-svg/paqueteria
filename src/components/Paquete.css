@@ -1,0 +1,46 @@
+.pkg_card {
+  position: relative;          /* ancla para posicionar el label */
+  overflow: hidden;
+  height: 100%;                /* o el alto que necesites */
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #e5e7eb;   /* border-gray-200 */
+  font-size: 1.5rem;           /* text-2xl */
+  box-sizing: border-box;
+}
+
+.pkg_label {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-90%);
+  background-color: black;
+  color: white;
+  pointer-events: none;
+  transition: transform 0.3s ease; 
+}
+
+.pkg_span {
+     display: inline-block; 
+    transition: transform 0.3s ease; 
+}
+
+.pkg_card:hover .pkg_span {
+  transform: translateX(-120%); 
+  
+}
+
+.pkg_card:hover .pkg_label {
+  transform: translateX(0);
+
+}
+
+
+
+

@@ -91,26 +91,10 @@ const AdminPage = () => {
           </ItemDescription>
         </ItemContent>
       </Item>
-       <Item variant="outline">
-        <ItemMedia variant="icon">
-      <PencilSparkles />
-        </ItemMedia>
-        <ItemContent>
-          <ItemTitle>Subir archivo txt</ItemTitle>
-          <ItemDescription>
-        <Attach></Attach>
-          </ItemDescription>
-        </ItemContent>
-      </Item>
-  <li><button className='hover:cursor-pointer' onClick={handleIdBultoClick}>Cambiar etapa por identificador de bulto </button></li>
-   <li><button className='hover:cursor-pointer' onClick={handle1PaqueteClick}>Cambiar etapa de un solo paquete de paquete </button></li>
-   <li><button className='hover:cursor-pointer' onClick={handleSubirTablaClick}>Subir datos de tabla </button></li>
+      
+ 
    
-   <li><button className='hover:cursor-pointer'>Ver resumen </button></li>
 
-    <li><button className='hover:cursor-pointer' onClick={handlePrueba} >Probar Funcion query </button></li>
-
-<li></li>
 </ul>
 
 

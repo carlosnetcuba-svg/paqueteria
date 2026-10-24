@@ -19,17 +19,23 @@ export const  etapas :Etapa[] = [
 ]
 
 
+
+//Lee todas las palabras en un archivos y devuelve un arreglo de estas sin repetir ninguna
 async function parseFile(file: File): Promise<string[]> {
 
   try{
   const text = await file.text();
 
-  return text
-    .replace(/[,;.]/g, " ")      // coma, punto y coma y punto → espacio
+  const todos= text
+    .replace(/[,;.-]/g, " ")      // coma, punto y coma y punto → espacio
     .replace(/\s+/g, " ")        // saltos de línea y espacios múltiples → 1 espacio
     .trim()                      // quita espacio al inicio/fin
     .split(" ")                  // separa por espacio
     .filter(Boolean);            // elimina vacíos (por seguridad)
+
+    const unicos = Array.from(new Set(todos));
+    return unicos;
+
 }catch(e){
   console.log("parseFileError",e)
   return []

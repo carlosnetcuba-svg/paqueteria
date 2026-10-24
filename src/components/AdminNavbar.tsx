@@ -38,8 +38,10 @@ const Navbar = () => {
     <div className='text-2xl flex justify-between p-4 bg-amber-500 mb-5 '>
         <div><h1 >LOGO</h1></div>
         <div>
-            <ul className='flex justify-center gap-3'>
-                <li><Link to={"/admin"}><h1>Board</h1></Link></li>
+            <ul className='flex justify-center gap-2'>
+                <li><Link to={"/admin"}><h1>Dash</h1></Link></li>
+                 <li><Link to={"/admin"}><h1>Subir</h1></Link></li>
+                 <li><Link to={"/admin"}><h1>Editar</h1></Link></li>
                  <li><h1 onClick={handleCerrarSession} className=' hover:cursor-pointer'>SignOut</h1></li>
             </ul>
         </div>

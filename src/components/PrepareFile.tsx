@@ -1,4 +1,7 @@
 import React from 'react'
+import { AttachmentDescription,AttachmentTitle,AttachmentMedia,
+AttachmentContent
+} from './ui/attachment'
 import {
   Field,
   FieldDescription,
@@ -8,8 +11,11 @@ import { Button } from './ui/button'
 import { Input } from "@/components/ui/input"
 import { AdIcon } from 'lucide-react'
 import { useRef ,useState} from 'react'
-import Paquete from './paquete'
+import Paquete from './Paquete'
 import parseFile from '@/context/utils'
+import { Attachment,AttachmentActions, AttachmentAction} from './ui/attachment'
+import { SendIcon } from 'lucide-react'
+import { Delete } from 'lucide-react'
 import {
   Empty,
   EmptyContent,
@@ -18,13 +24,14 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
+import { DialogSubirNuevos } from './DialogSubirNuevos'
 
 const PrepareFile = () => {
 
-const [dragging, setDragging] = useState(false);
+
   const [pkgProcesados,setpkgProcesados]=useState<string[]>([])
   const [file, setFile] = useState<File | null>(null)
-  const [isProcessing, setIsProcessing] = useState(false)
+  
    const ref = useRef();
 
   // 1. Manejar la selección del archivo
@@ -45,6 +52,7 @@ const [dragging, setDragging] = useState(false);
   // 2. Eliminar el archivo
   const handleRemove = () => {
     setFile(null)
+    setpkgProcesados([])
     // Resetear el input visualmente (opcional, usando una ref)
   }
  
@@ -52,9 +60,9 @@ const [dragging, setDragging] = useState(false);
     <div className=' p-4 sm:p-10 '>
         
 
-{pkgProcesados.length?(<div><label 
+{pkgProcesados.length==0?(<div><label 
         htmlFor="file-upload"        
-        className="flex w-full h-dvh sm:h-screen cursor-pointer "
+     className="flex w-full h-[50dvh] sm:h-[50vh] cursor-pointer"
         
         >
     <Empty className="border border-dashed border-gray-600">
@@ -71,11 +79,38 @@ const [dragging, setDragging] = useState(false);
 </EmptyContent>
 </Empty>
 </label>
-<input hidden id="file-upload" type="file" onChange={handleFileChange}></input></div>):(<div className="flex flex-col gap-3 mt-5">
+<input hidden id="file-upload" type="file" onChange={handleFileChange}></input></div>):(
+  
+
+   <div className="flex flex-col ">
+    
+    <div className="mx-auto flex w-full max-w-sm flex-col gap-3 py-12">
+      <div className='flex flex-row content-center flex-wrap gap-2 
+      
+       items-center justify-center'>
+      <Attachment size="default" >
+        
+        <AttachmentContent>
+          <AttachmentTitle>{file?.name}</AttachmentTitle>
+          <AttachmentDescription>{`Total: ${pkgProcesados.length}`}</AttachmentDescription>
+        </AttachmentContent>
+        <Button  type="button" 
+        onClick={handleRemove}
+  className="bg-red-300   hover:bg-red-500 text-white  
+   py-2 px-3  focus:outline-none focus:ring-2 ">X</Button>
+      </Attachment>
+     
+      <DialogSubirNuevos doneFn={handleRemove} paquetes={pkgProcesados}></DialogSubirNuevos>
+     </div>
+    </div>
+
+   
+  <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
+  
   {pkgProcesados.map((p) => (
-    <Paquete nombre={p} key={p} />
+    <Paquete nombre={p} labeltext={"Pending"} key={p} />
   ))}
-</div>)}
+</div></div>)}
 
         </div>
   )

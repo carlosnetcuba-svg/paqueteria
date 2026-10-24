@@ -4,7 +4,12 @@ import supabasecl from "@/context/supabasecl";
 
 
 
+type paqueteI={
+  realid:string
+  etapa:number
+  grupo:string
 
+}
 
 
 
@@ -103,7 +108,7 @@ else  {
     
 },
 
-//PROBADA FUNCIONA BIEN
+
 ModificarEtapasDelPaquete: async (paquete:string,etapa:number)=>{
 
   try{
@@ -117,7 +122,24 @@ return { data, error }
   }
     
 },
+SubirMultiplesPaquetes: async (paquetes:string[],etapa:number,grupo:string)=>{
 
+  try{
+ console.log("SubirMultiplesPaquetes Ejecutando")
+    const dataToUpload:paqueteI[]=paquetes.map((p)=>{return{realid:p,etapa:etapa,grupo:grupo} })
+ console.log("dataToUpload",dataToUpload)
+
+ 
+ const  { data, error } = await supabasecl.from('paquete').insert(dataToUpload).select()
+  console.log(data,error)
+  return { data, error }
+}
+  catch(e){
+    console.error(e)
+     return {error:"Catch Error here",data:""}
+  }
+    
+},
 
 
 
