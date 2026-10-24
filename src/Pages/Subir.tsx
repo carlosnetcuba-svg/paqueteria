@@ -1,19 +1,19 @@
 import React from 'react'
 import { AttachmentDescription,AttachmentTitle,AttachmentMedia,
 AttachmentContent
-} from './ui/attachment'
+} from '../components/ui/attachment'
 import {
   Field,
   FieldDescription,
   FieldLabel,
 } from "@/components/ui/field"
-import { Button } from './ui/button'
+import { Button } from '../components/ui/button'
 import { Input } from "@/components/ui/input"
 import { AdIcon } from 'lucide-react'
 import { useRef ,useState} from 'react'
-import Paquete from './Paquete'
+import Paquete from '../components/Paquete'
 import parseFile from '@/context/utils'
-import { Attachment,AttachmentActions, AttachmentAction} from './ui/attachment'
+import { Attachment,AttachmentActions, AttachmentAction} from '../components/ui/attachment'
 import { SendIcon } from 'lucide-react'
 import { Delete } from 'lucide-react'
 import {
@@ -24,9 +24,9 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { DialogSubirNuevos } from './DialogSubirNuevos'
+import { DialogSubirNuevos } from '../Dialogs/DSubirNuevos'
 
-const PrepareFile = () => {
+const Subir = () => {
 
 
   const [pkgProcesados,setpkgProcesados]=useState<string[]>([])
@@ -116,4 +116,4 @@ const PrepareFile = () => {
   )
 }
 
-export default PrepareFile
+export default Subir

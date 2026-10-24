@@ -27,13 +27,15 @@ import { etapas } from "@/context/utils"
 
 import { useActionState } from "react"
 import { Supabasequeries } from "@/context/queries"
+import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
+import { InboxIcon } from "lucide-react"
 
 
 
 
 
 
-export function DialogGroupEditor() {
+export function DialogPkgEditorEtapa() {
 
   
   const [open, setOpen] = useState(false)
@@ -46,19 +48,19 @@ export function DialogGroupEditor() {
     try{
     
     console.log(Formdata.get("etapano"))
-     console.log(Formdata.get("grupoid"))
+     console.log(Formdata.get("pkgid"))
 
      const e=Formdata.get("etapano");
-     const g=Formdata.get("grupoid")
+     const p=Formdata.get("pkgid")
 
 
-       console.log({ e, g })
+       console.log({ e, p })
 
-    if (!e || !g) {
+    if (!e || !p) {
       return "Faltan campos obligatorios" 
     }else{
       
-  const { data, error } =await  Supabasequeries.ModificarEtapasDelGrupo(g,e)
+  const { data, error } =await  Supabasequeries.ModificarEtapasDelPaquete(p,e)
 
 console.log("DATA:",data)
 console.log("ERROR:",error)
@@ -68,14 +70,13 @@ setOpen(false)
 if(data){
   toast.add({
   title: "Tarea completada",
-  description: `Se actualizaron ${data.length} paquete(s)` ,
+  description: `Paquete ${p} actualizado`,
 })
 }
 if(error){
   toast.add({
   title: "Error",
 description: typeof error === "string" ? error :"Ha ocurrido un error"
-
 })
 }
 
@@ -97,19 +98,34 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
   return (
     <Dialog   open={open} onOpenChange={setOpen}>
       
-        <DialogTrigger render={<Button className="m-3" variant="outline">Entrar</Button>} />
+        <DialogTrigger render={
+           
+         <Item className="hover:bg-gray-300 " variant="outline">
+        <ItemMedia variant="icon">
+          <InboxIcon />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Modifica muchos paquetes
+</ItemTitle>
+          <ItemDescription>
+           Modifica todos los paquetes que correspondan a un grupo o bulto
+          </ItemDescription>
+        </ItemContent>
+
+      </Item>
+          } />
         <DialogContent className="sm:max-w-sm">
           <form action={FormAction}>
           <DialogHeader>
-            <DialogTitle>Modifica muchos paquetes</DialogTitle>
+            <DialogTitle>Modificar etapa</DialogTitle>
             <DialogDescription>
-             Modifica todos los paquetes que correspondan a un grupo o bulto
+             Modifica la etapa de un unico paquete
             </DialogDescription>
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name-1">Identificador del grupo/bulto</Label>
-              <Input id="name-1" name="grupoid" placeholder="grupo01" />
+              <Label htmlFor="name-1">Identificador del paquete</Label>
+              <Input id="name-1" name="pkgid" placeholder="pkg0034512222" />
             </Field>
             <Field>
               <Label htmlFor="username-1">Etapas</Label>
@@ -132,7 +148,7 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
           </FieldGroup>
           <DialogFooter>
             <DialogClose render={<Button disabled={isPending} variant="outline">Cancel</Button>} />
-            <Button disabled={isPending} type="submit">Aceptar</Button >
+            <Button disabled={isPending} type="submit">Aceptar</Button>
           </DialogFooter>
              </form>
         </DialogContent>

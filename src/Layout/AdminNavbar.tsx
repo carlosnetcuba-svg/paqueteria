@@ -39,8 +39,8 @@ const Navbar = () => {
         <div><h1 >LOGO</h1></div>
         <div>
             <ul className='flex justify-center gap-2'>
-                <li><Link to={"/admin"}><h1>Dash</h1></Link></li>
-                 <li><Link to={"/admin"}><h1>Subir</h1></Link></li>
+                <li><Link to={"/admin/dash"}><h1>Dash</h1></Link></li>
+                 <li><Link to={"/admin/upload"}><h1>Subir</h1></Link></li>
                  <li><Link to={"/admin"}><h1>Editar</h1></Link></li>
                  <li><h1 onClick={handleCerrarSession} className=' hover:cursor-pointer'>SignOut</h1></li>
             </ul>
