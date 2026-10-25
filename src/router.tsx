@@ -21,7 +21,7 @@ export const myrouter=createBrowserRouter([
     path: "/admin",
     element: <AdminLayout />,      // 👈 el layout (navbar + Outlet)
     children: [
-      { index: true, element: <Edit /> },   // /admin
+     // { index: true, element: <Edit /> },   // /admin
       { path: "upload", element: <Subir /> },     // /admin/users
       { path: "dash", element: <Dash /> } // /admin/settings
     ],

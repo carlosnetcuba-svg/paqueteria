@@ -7,13 +7,20 @@ import { RouterProvider } from 'react-router-dom'
 import { GlobalContextProvider } from './context/context.tsx'
 import { myrouter } from './router.tsx'
 import { Toaster } from './components/ui/toast.tsx'
+import { TooltipProvider } from './components/ui/tooltip.tsx'
+
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <GlobalContextProvider>
-     <RouterProvider router={myrouter}></RouterProvider>
+   
+ <TooltipProvider > 
+      <GlobalContextProvider>
+     <RouterProvider router={myrouter}>
+     </RouterProvider>
     </GlobalContextProvider>
+    </TooltipProvider>
+   
   <Toaster></Toaster>
   </StrictMode>,
 )

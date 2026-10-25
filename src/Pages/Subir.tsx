@@ -11,7 +11,7 @@ import { Button } from '../components/ui/button'
 import { Input } from "@/components/ui/input"
 import { AdIcon } from 'lucide-react'
 import { useRef ,useState} from 'react'
-import Paquete from '../components/Paquete'
+
 import parseFile from '@/context/utils'
 import { Attachment,AttachmentActions, AttachmentAction} from '../components/ui/attachment'
 import { SendIcon } from 'lucide-react'
@@ -25,6 +25,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty"
 import { DialogSubirNuevos } from '../Dialogs/DSubirNuevos'
+import Paquete2 from '@/components/Paquete2'
 
 const Subir = () => {
 
@@ -108,7 +109,7 @@ const Subir = () => {
   <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
   
   {pkgProcesados.map((p) => (
-    <Paquete nombre={p} labeltext={"Pending"} key={p} />
+    <Paquete2 nombre={p} etapa={0} key={p} />
   ))}
 </div></div>)}
 

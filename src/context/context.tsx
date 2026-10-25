@@ -2,6 +2,7 @@ import { useContext,createContext,useState } from "react";
 const GlobalContext= createContext();
 import supabasecl from "./supabasecl";
 import { useEffect } from "react";
+import { Supabasequeries } from "./queries";
 
 
 
@@ -9,6 +10,53 @@ import { useEffect } from "react";
 export const GlobalContextProvider=({children})=>{
    
     const [session,setSession]=useState()
+
+    const [paquetes,Setpaquetes]=useState([])
+      const [grupos,SetGrupos]=useState([])
+      const [loading,SetLoading]=useState(true)
+      const [loadingg,SetLoadingg]=useState(true)
+      const [error,SetError]=useState<unknown>(null)
+      const [errorg,SetErrorg]=useState<unknown>(null)
+
+
+
+         async function hacerFetchpaquetes(){
+            const {error,data}=await Supabasequeries.ObtenerTodosPaquetes()    
+          if(error){SetError(error);console.error(error); }
+          else if(data){
+            Setpaquetes(data)
+          }
+           SetLoading(false)
+        }
+          async function hacerFetchGrupos(){
+            const {error,data}=await Supabasequeries.ObtenerTodosGrupos()    
+          if(error){SetErrorg(error);console.error(error); }
+          else if(data){
+            SetGrupos(data)
+          }
+           SetLoadingg(false)
+        }
+    
+
+
+      function reloadfetch(){
+        SetLoading(true)
+        SetError(null)
+         SetErrorg(null)
+        hacerFetchpaquetes()
+        hacerFetchGrupos()
+      }
+
+
+    useEffect(()=>{  
+        hacerFetchpaquetes()
+        hacerFetchGrupos()
+       },[])
+
+
+
+
+
 
     useEffect(()=>{
 //1) check in first render for a session
@@ -90,7 +138,8 @@ export const GlobalContextProvider=({children})=>{
     
 
     return (
-        <GlobalContext.Provider value={{session,iniciarsesion,cerrarsession}}>
+        <GlobalContext.Provider value={{session,iniciarsesion,cerrarsession,
+        paquetes,grupos,loading,loadingg,error,errorg,reloadfetch}}>
             {children}
         </GlobalContext.Provider>
     );

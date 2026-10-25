@@ -74,6 +74,32 @@ const { data, error } = await supabasecl
 },
 
 
+ObtenerTodosGrupos: async ()=>{
+
+  console.log("ObtenerTodosGrupos Ejecutando")
+  try{
+const { data, error } = await supabasecl.from('grupo').select()
+  
+   //if(data){console.log("datos resultantes",data)}
+   if(error){console.error("ocurrio error",error)}
+   return {data,error};
+   }
+   catch(e){
+    console.log(e,"Catch Error" )
+    return {error:"Catch Error"}
+   }
+},
+
+
+
+
+
+
+
+
+
+
+
 
 
 
