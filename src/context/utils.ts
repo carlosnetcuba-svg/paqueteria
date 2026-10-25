@@ -50,4 +50,7 @@ async function parseFile(file: File): Promise<string[]> {
 
   }
 
+
 export default parseFile;
+
+
