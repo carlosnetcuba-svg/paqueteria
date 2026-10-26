@@ -8,6 +8,7 @@ import Edit from "./Pages/Edit"
 import AdminLayout from "./Layout/AdminLayout"
 import Subir from "./Pages/Subir"
 import Dash from "./Pages/Dash"
+import { PageCliente } from "./Pages/PageCliente"
 
 
 
@@ -15,7 +16,7 @@ import Dash from "./Pages/Dash"
 
 export const myrouter=createBrowserRouter([
 
-    {path:"/", element:<Trace></Trace>},
+    {path:"/", element:<PageCliente></PageCliente>},
     {path:"/signin", element:<SignIn></SignIn>},
     {
     path: "/admin",

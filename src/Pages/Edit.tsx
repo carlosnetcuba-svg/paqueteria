@@ -2,9 +2,11 @@ import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from '@/comp
 import { DGroupEditor } from '@/Dialogs/DGroupEditor'
 import { DPkgEditorEtapa } from '@/Dialogs/DPkgEditorEtapa'
 import { DGroupCreate } from '@/Dialogs/DGroupCreate'
-import { PencilSparkles } from 'lucide-react'
-import React from 'react'
+import { DPkgCreate } from '@/Dialogs/DPkgCreate'
+import { Link } from 'react-router-dom'
 import { DGroupDel } from '@/Dialogs/DGroupDel'
+import { FilePlusCorner } from 'lucide-react'
+
 
 const Edit = () => {
   return (
@@ -12,12 +14,19 @@ const Edit = () => {
       <div className='grid gap-3'>
 
 <ul className='flex flex-col gap-3 sm:gap-6'>
-      <DGroupEditor></DGroupEditor>
-
-      <DPkgEditorEtapa></DPkgEditorEtapa>
       <DGroupCreate></DGroupCreate>
+      
+            <DPkgCreate></DPkgCreate>{/* Crea un paquete*/}
+            <Link to={"/admin/upload"}><CreateLinkToSubirFile></CreateLinkToSubirFile></Link>
+
+
+            <DGroupEditor></DGroupEditor>
+      <DPkgEditorEtapa></DPkgEditorEtapa>
+     
       <DGroupDel></DGroupDel>
-      <p>TODO CREAR UN SOLO PAQUTE</p>
+
+
+
             <p> CREAR LINK A MUCHOS   PAQUTE</p>
 
       
@@ -30,3 +39,23 @@ const Edit = () => {
 }
 
 export default Edit
+
+
+function CreateLinkToSubirFile(){
+      return (
+           
+         <Item className="hover:bg-gray-300 " variant="outline">
+        <ItemMedia variant="icon">
+     <FilePlusCorner />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Crea muchos paquetes
+</ItemTitle>
+          <ItemDescription>
+           Sube un archivo de texto con los paquetes a crear
+          </ItemDescription>
+        </ItemContent>
+
+      </Item>)
+          
+}

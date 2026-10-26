@@ -15,25 +15,16 @@ type paqueteI={
 
 export const  Supabasequeries={
    
-addPet: async (name:string,age:number,weight:number)=>{
+CrearPaquete: async (name:string,grupo:string,etapa:number)=>{
 
 const {data,error} = await supabasecl
-  .from("Pet") .insert({ name: name, age: age, weight: weight })
-  .select()
+  .from("paquete") .insert({ realid: name, grupo: grupo, etapa: etapa }).select()
     console.log(data)
     console.log(error)
     return {data,error}
 },
-getPets: async (fromPage:number)=>{
 
-const {data,error} = await supabasecl
-  .from("Pet") .select()
-    
-   if(data){console.log(data)}
-   if(error){console.error(error)}
-    return data;
-}
-,
+
 //PROBADA FUNCIONA BIEN
 ObtenerTodosPaquetesDelGrupo: async (grupo:string)=>{
 
@@ -52,6 +43,23 @@ const { data, error } = await supabasecl
    catch(e){
     console.log(e,"Catch Error" )
     return {error:"Catch Error"}
+   }
+},
+
+
+ObtenerEtapadePaquete: async (realid:string)=>{
+
+  console.log("ObtenerEtapadePaquete Ejecutando")
+  try{
+const { data, error } = await supabasecl .from('paquete').select('etapa').order('etapa',{ascending:false}).eq('realid', realid).limit(1).select()
+   if(data){console.log("datos resultantes",data)}
+   if(error){console.error("ocurrio error",error)}
+
+   return {data,error};
+   }
+   catch(e){
+    console.log(e,"Catch Error" )
+    return {data: undefined, error:"Catch Error"}
    }
 },
 
@@ -89,20 +97,6 @@ const { data, error } = await supabasecl.from('grupo').select()
     return {error:"Catch Error"}
    }
 },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //PROBADA FUNCIONA BIEN

@@ -66,7 +66,7 @@ const Dash = () => {
     <div >
 
 
-      <h1 className='flex justify-start ml-0 m-5 text-2xl font-bold color-gray-700'>Grupos/Bultos</h1>
+      <h1 className='flex justify-start ml-0 m-5 text-2xl font-bold text-gray-900'>Grupos/Bultos</h1>
       <Field className='flex flex-row items-center'>
 
         <Input 
@@ -86,7 +86,10 @@ const Dash = () => {
       {loadingg ? (<Cargando />) : (errorg ? (<p>{getErr(error)}</p>) : (<Todosgrupos filter={filergroup} />))}
 
       <br />
-      <h1 className='flex justify-start m-5 text-2xl font-bold color-gray-700'>Paquetes</h1>
+      <div className='flex'>
+      <h1 className='flex justify-start m-5 text-2xl font-bold  text-gray-900'>Paquetes</h1>
+      
+      </div>
       <Field className='flex flex-row items-center'>
 
         <Input className='w-full max-w-[250px]' id="filergroup" type="text" placeholder="paquete..."
@@ -153,6 +156,7 @@ const contador = filtrados.length
     <div className="flex flex-wrap gap-4">
       {filtrados.map((p) => ( <Paquete2 key={p.id} nombre={p.realid} etapa={p.etapa} />))}
     </div>
+    <br /><br />
      <p>Mostrando {contador} paquetes de un total de {paquetes.length}</p> 
 </div>
   )

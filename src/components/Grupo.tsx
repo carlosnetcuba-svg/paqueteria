@@ -14,7 +14,7 @@ const Grupo2 = ({nombre,cantidadpaquetes}:{nombre:string,cantidadpaquetes:number
       <TooltipTrigger render={
 
       
-      <Badge className={` bg-black cursor-default ` } onClick={async()=>{ 
+      <Badge className={` bg-gray-900 text-white cursor-default ` } onClick={async()=>{ 
        const copied= await copyToClipboard(nombre)
         if(copied){toast.add({type: "info", description: "Elemento copiado en el portapapeles"})}}
       } 

@@ -6,7 +6,7 @@ import { Tooltip,TooltipTrigger,TooltipContent } from './ui/tooltip'
 
 const Paquete2 = ({nombre,etapa}:{nombre:string,etapa:number}) => {
    
-  const className = colorPorEtapa[etapa] ?? 'bg-black'
+  const className = colorPorEtapa[etapa] ?? 'bg-gray-900 text-white'
 
   return (
   

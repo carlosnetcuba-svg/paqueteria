@@ -116,7 +116,7 @@ const ShowInfo= () => {
   </EmptyHeader>
 <EmptyContent>
   
-  <span className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white">
+  <span className="inline-flex items-center justify-center rounded-md bg-gray-900 text-white px-4 py-2 text-sm font-medium ">
     Subir
   </span>
 </EmptyContent>
