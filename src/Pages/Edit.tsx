@@ -17,6 +17,8 @@ const Edit = () => {
       <DPkgEditorEtapa></DPkgEditorEtapa>
       <DGroupCreate></DGroupCreate>
       <DGroupDel></DGroupDel>
+      <p>TODO CREAR UN SOLO PAQUTE</p>
+            <p> CREAR LINK A MUCHOS   PAQUTE</p>
 
       
 </ul>

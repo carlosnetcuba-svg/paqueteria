@@ -28,7 +28,7 @@ import { etapas } from "@/context/utils"
 import { useActionState } from "react"
 import { Supabasequeries } from "@/context/queries"
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
-import { InboxIcon } from "lucide-react"
+import { InboxIcon, Pencil } from "lucide-react"
 
 
 
@@ -102,13 +102,13 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
            
          <Item className="hover:bg-gray-300 " variant="outline">
         <ItemMedia variant="icon">
-          <InboxIcon />
+         <Pencil />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Modifica muchos paquetes
+          <ItemTitle>Modificar etapa
 </ItemTitle>
           <ItemDescription>
-           Modifica todos los paquetes que correspondan a un grupo o bulto
+           Modifica la etapa de un unico paquete 
           </ItemDescription>
         </ItemContent>
 

@@ -6,7 +6,7 @@ import { Tooltip,TooltipTrigger,TooltipContent } from './ui/tooltip'
 
 const Paquete2 = ({nombre,etapa}:{nombre:string,etapa:number}) => {
    
-  const className = colorPorEtapa[etapa] ?? 'bg-gray-400'
+  const className = colorPorEtapa[etapa] ?? 'bg-black'
 
   return (
   
@@ -21,6 +21,7 @@ const Paquete2 = ({nombre,etapa}:{nombre:string,etapa:number}) => {
          >{nombre}</Badge>
    
       } />
+    
       <TooltipContent>
         <p>{EtapaToLabel(etapa)}</p>
       </TooltipContent>
@@ -44,12 +45,12 @@ async function copyToClipboard(text: string): Promise<boolean> {
 }
 
 const colorPorEtapa: Record<number, string> = {
-  10: 'bg-amber-600',
-  20: 'bg-blue-600',
-  30: 'bg-green-600',
-  40: 'bg-red-600',
-  50: 'bg-purple-600',
-  60: 'bg-pink-600',
-  70: 'bg-cyan-600',
-  80: 'bg-orange-600',
+10: 'bg-blue-200 text-gray-900',
+20: 'bg-blue-300 text-gray-900',
+30: 'bg-blue-400 text-gray-900',
+40: 'bg-blue-500 text-white',
+50: 'bg-blue-600 text-white',
+60: 'bg-blue-700 text-white',
+70: 'bg-blue-800 text-white',
+80: 'bg-blue-900 text-white',
 }

@@ -28,7 +28,7 @@ import { etapas } from "@/context/utils"
 import { useActionState } from "react"
 import { Supabasequeries } from "@/context/queries"
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
-import { InboxIcon } from "lucide-react"
+import { FileStack, InboxIcon, Pencil } from "lucide-react"
 
 
 
@@ -99,7 +99,7 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
           
            <Item variant="outline" className="hover:bg-gray-300 ">
         <ItemMedia variant="icon">
-          <InboxIcon />
+       <FileStack />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Modifica muchos paquetes

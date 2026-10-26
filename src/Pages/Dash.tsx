@@ -14,6 +14,16 @@ import { Input } from "@/components/ui/input"
 import Grupo2 from '@/components/Grupo';
 import Grafico from '@/components/Grafico';
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { etapasparafiltrar } from '@/context/utils';
 
 
 
@@ -25,11 +35,13 @@ const Dash = () => {
   const { paquetes, grupos, loading, loadingg, reloadfetch, error, errorg } = useGlobal()
   const [filergroup, Setfiltergroup] = useState("")
   const [filerpaquete, Setfilterpaquete] = useState("")
+  const [filteretapa, Setfilteretapa] = useState<number>(0)
 
 
   function handlefilterg(e: React.ChangeEvent<HTMLInputElement>) {
     Setfiltergroup(e.target.value)
     Setfilterpaquete("")
+    Setfilteretapa(0)
     console.log(e.target.value)
   }
   function handlefilterp(e: React.ChangeEvent<HTMLInputElement>) {
@@ -37,6 +49,14 @@ const Dash = () => {
     Setfiltergroup("")
     console.log(e.target.value)
   }
+
+  const handleEtapaChange =  (value: string | null) => {
+  console.log('etapa seleccionada:', value)
+  const parsed = value === "0" ? 0 : Number(value)
+  Setfiltergroup("")
+  Setfilteretapa(parsed)
+  console.log("parseetapa",parsed)
+}
 
 
 
@@ -49,12 +69,15 @@ const Dash = () => {
       <h1 className='flex justify-start ml-0 m-5 text-2xl font-bold color-gray-700'>Grupos/Bultos</h1>
       <Field className='flex flex-row items-center'>
 
-        <Input id="filergroup" type="text" placeholder="group..."
+        <Input 
+        className='w-full max-w-[250px]'
+        id="filergroup" type="text" 
+          placeholder="group..."
           value={filergroup}
           onChange={handlefilterg}
         />
-        <FieldDescription>
-          Filtrar por grupo
+        <FieldDescription className='hidden sm:block'>
+          Filtrar los grupos
         </FieldDescription>
       </Field>
 
@@ -66,17 +89,40 @@ const Dash = () => {
       <h1 className='flex justify-start m-5 text-2xl font-bold color-gray-700'>Paquetes</h1>
       <Field className='flex flex-row items-center'>
 
-        <Input id="filergroup" type="text" placeholder="group..."
+        <Input className='w-full max-w-[250px]' id="filergroup" type="text" placeholder="paquete..."
           value={filerpaquete}
           onChange={handlefilterp}
         />
         <FieldDescription>
-          Filtrar por paquete
+          Filtrar por nombre de paquete
         </FieldDescription>
       </Field>
+        <br />
+       <Field className='flex flex-row items-center'>
+
+      <Select items={etapasparafiltrar} onValueChange={handleEtapaChange}>
+      <SelectTrigger className="w-full max-w-[250px]">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectLabel>Etapa</SelectLabel>
+          {etapasparafiltrar.map((e) => (
+          <SelectItem key={e.value} value={e.value}>
+              {e.label}
+            </SelectItem>
+          ))}
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+        <FieldDescription>
+          Filtrar por la etapa que se encuetra el paquete
+        </FieldDescription>
+      </Field>
+
       <hr />
       <br />
-      {loading ? (<Cargando />) : (error ? (<p>{getErr(error)}</p>) : (<Todospaquetes filter={filerpaquete} />))}
+      {loading ? (<Cargando />) : (error ? (<p>{getErr(error)}</p>) : (<Todospaquetes filteretapa={filteretapa} filter={filerpaquete} />))}
 
       <br /> <br /> <br />
       <Grafico>
@@ -93,28 +139,32 @@ const Dash = () => {
 export default Dash
 
 
-const Todospaquetes = ({filter}:{filter:string}) => {
+const Todospaquetes = ({filter,filteretapa}:{filter:string,filteretapa:number}) => {
   const { paquetes } = useGlobal()
 
+  const filtrados = paquetes.filter((p) => {
+  const coincideNombre = p.realid.toLowerCase().includes(filter.toLowerCase())
+  const coincideEtapa = filteretapa == 0 || filteretapa == p.etapa
+  return coincideNombre && coincideEtapa
+})
+const contador = filtrados.length
   return (
+    <div>
     <div className="flex flex-wrap gap-4">
-      {paquetes.map((p) => (
-       p.realid.toLowerCase().includes(filter.toLowerCase())?
-       <Paquete2 nombre={p.realid} etapa={p.etapa} key={p.id} />:
-       <></>
-      ))}
+      {filtrados.map((p) => ( <Paquete2 key={p.id} nombre={p.realid} etapa={p.etapa} />))}
     </div>
-
+     <p>Mostrando {contador} paquetes de un total de {paquetes.length}</p> 
+</div>
   )
 }
 
-const Todosgrupos = ({filter}:{filter:string}) => {
+const Todosgrupos = ({filter}:{filter:string,filteretapa:number}) => {
   const { grupos } = useGlobal()
   return (
     <div className="flex flex-wrap gap-4">
       {grupos.map((g) => (
         g.nombre.toLowerCase().includes(filter.toLowerCase())?
-        <Grupo2 nombre={g.nombre} cantidadpaquetes={countGroup(g.nombre)} key={g.id} />:
+         <Grupo2 nombre={g.nombre} cantidadpaquetes={countGroup(g.nombre)} key={g.id} />:
         <></>
       ))}
     </div>

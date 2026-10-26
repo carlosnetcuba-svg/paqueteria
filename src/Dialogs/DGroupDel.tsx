@@ -28,7 +28,7 @@ import { etapas } from "@/context/utils"
 import { useActionState } from "react"
 import { Supabasequeries } from "@/context/queries"
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
-import { InboxIcon } from "lucide-react"
+import { InboxIcon, Trash } from "lucide-react"
 
 
 
@@ -114,7 +114,7 @@ description: typeof e === "string" ? e :"Ha ocurrido un error"
           
            <Item variant="outline" className="hover:bg-gray-300 ">
         <ItemMedia variant="icon">
-          <InboxIcon />
+          <Trash />
         </ItemMedia>
         <ItemContent>
           <ItemTitle>Elimina muchos paquetes 

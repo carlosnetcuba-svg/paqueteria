@@ -42,9 +42,11 @@ ObtenerTodosPaquetesDelGrupo: async (grupo:string)=>{
 const { data, error } = await supabasecl
   .from('paquete')
   .select('*, grupo!inner(nombre)')
+  .order("etapa")
   .eq('grupo.nombre', grupo)
    if(data){console.log("datos resultantes",data)}
    if(error){console.error("ocurrio error",error)}
+
    return {data,error};
    }
    catch(e){
@@ -57,11 +59,11 @@ const { data, error } = await supabasecl
 
 ObtenerTodosPaquetes: async ()=>{
 
-  console.log("ObtenerTodosPaquetesDelGrupo Ejecutando")
+  console.log("ObtenerTodosPaquetes Ejecutando")
   try{
 const { data, error } = await supabasecl
   .from('paquete')
-  .select('*, grupo!inner(nombre)')
+  .select('*, grupo!inner(nombre)').order('etapa')
   
    //if(data){console.log("datos resultantes",data)}
    if(error){console.error("ocurrio error",error)}
@@ -75,11 +77,9 @@ const { data, error } = await supabasecl
 
 
 ObtenerTodosGrupos: async ()=>{
-
   console.log("ObtenerTodosGrupos Ejecutando")
   try{
 const { data, error } = await supabasecl.from('grupo').select()
-  
    //if(data){console.log("datos resultantes",data)}
    if(error){console.error("ocurrio error",error)}
    return {data,error};

@@ -58,10 +58,52 @@ const Subir = () => {
   }
  
   return (
-    <div >
+  <div className="flex flex-row flex-wrap sm:flex-col">
         
 
-{pkgProcesados.length==0?(<div><label 
+{pkgProcesados.length==0?(<div>
+  <ShowInfo></ShowInfo>
+<input hidden id="file-upload" type="file" onChange={handleFileChange}></input></div>):(
+  
+
+   <div className="flex flex-col "> 
+    <div className="mx-auto flex w-full max-w-sm flex-col gap-3 py-12">
+      <div className='flex flex-row content-center flex-wrap gap-2  
+       items-center justify-center'>
+      <Attachment size="default" >    
+        <AttachmentContent>
+          <AttachmentTitle>{file?.name}</AttachmentTitle>
+          <AttachmentDescription>{`Total: ${pkgProcesados.length}`}</AttachmentDescription>
+        </AttachmentContent>
+        <Button  type="button" 
+        onClick={handleRemove}
+  className="bg-red-200   hover:bg-red-500 text-white  
+   py-2 px-3  focus:outline-none focus:ring-2 ">X</Button>
+      </Attachment>
+      <DialogSubirNuevos doneFn={handleRemove} paquetes={pkgProcesados}></DialogSubirNuevos>
+     </div>
+    </div>
+
+   
+  <div className="flex flex-wrap gap-4">
+  {pkgProcesados.map((p) => (
+    <Paquete2 nombre={p} etapa={0} key={p} />
+  ))}
+</div></div>)}
+
+        </div>
+  )
+
+
+
+
+}
+
+export default Subir
+
+const ShowInfo= () => {
+
+  return <label 
         htmlFor="file-upload"        
      className="flex w-full h-[50dvh] sm:h-[50vh] cursor-pointer"
         
@@ -80,41 +122,6 @@ const Subir = () => {
 </EmptyContent>
 </Empty>
 </label>
-<input hidden id="file-upload" type="file" onChange={handleFileChange}></input></div>):(
-  
 
-   <div className="flex flex-col ">
-    
-    <div className="mx-auto flex w-full max-w-sm flex-col gap-3 py-12">
-      <div className='flex flex-row content-center flex-wrap gap-2 
-      
-       items-center justify-center'>
-      <Attachment size="default" >
-        
-        <AttachmentContent>
-          <AttachmentTitle>{file?.name}</AttachmentTitle>
-          <AttachmentDescription>{`Total: ${pkgProcesados.length}`}</AttachmentDescription>
-        </AttachmentContent>
-        <Button  type="button" 
-        onClick={handleRemove}
-  className="bg-red-300   hover:bg-red-500 text-white  
-   py-2 px-3  focus:outline-none focus:ring-2 ">X</Button>
-      </Attachment>
-     
-      <DialogSubirNuevos doneFn={handleRemove} paquetes={pkgProcesados}></DialogSubirNuevos>
-     </div>
-    </div>
-
-   
-  <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
-  
-  {pkgProcesados.map((p) => (
-    <Paquete2 nombre={p} etapa={0} key={p} />
-  ))}
-</div></div>)}
-
-        </div>
-  )
 }
 
-export default Subir

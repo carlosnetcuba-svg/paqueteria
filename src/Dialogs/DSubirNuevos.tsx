@@ -27,7 +27,7 @@ import { etapas } from "@/context/utils"
 
 import { useActionState } from "react"
 import { Supabasequeries } from "@/context/queries"
-
+  import { useGlobal } from "@/context/context"
 
 
 
@@ -37,8 +37,9 @@ export function DialogSubirNuevos({doneFn,paquetes}:{doneFn:Function,paquetes:st
 
   
   const [open, setOpen] = useState(false)
+  const {grupos}=useGlobal()
   const [errorState,FormAction,isPending]= useActionState(
-
+  
 
 
   async (prev,Formdata)=>{
@@ -56,7 +57,12 @@ export function DialogSubirNuevos({doneFn,paquetes}:{doneFn:Function,paquetes:st
 
     if (!etapa || !grupo) {
       return "Faltan campos obligatorios" 
-    }else{
+    }
+   if (!grupos.some((g) => g.nombre === grupo)) {
+      return "El grupo designado no existe " 
+   }
+    
+    else{
       
   const { data, error } =await  Supabasequeries.SubirMultiplesPaquetes(paquetes,etapa,grupo)
 
@@ -116,7 +122,10 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Grupo</Label>
-              <Input id="name-1" name="grupo" placeholder="grupo34512222" />
+              <Input id="name-1" name="grupo" placeholder="grupo34512222"  list="lista-grupos"
+            
+              />
+          
             </Field>
             <Field>
               <Label htmlFor="username-1">Etapas</Label>
@@ -140,7 +149,9 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
           <DialogFooter>
             <DialogClose render={<Button disabled={isPending} variant="outline">Cancel</Button>} />
             <Button disabled={isPending} type="submit">Aceptar</Button>
+         
           </DialogFooter>
+             <p className="text-red-600">{errorState}</p>
              </form>
         </DialogContent>
    

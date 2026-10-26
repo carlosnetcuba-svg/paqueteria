@@ -21,13 +21,10 @@ const chartData = [
 
 const chartConfig = {
     Grupo: {
-        label: "Desktop",
-        color: "#2563eb",
+        label: "grupi",
+        color: "#22c55e",
     },
-    mobile: {
-        label: "Mobile",
-        color: "#60a5fa",
-    },
+   
 } satisfies ChartConfig
 
 const Grafico = () => {
@@ -38,25 +35,25 @@ const Grafico = () => {
     useEffect(() => {
         const tempArray:Object[] = []
         grupos.map((g) => {
-            tempArray.push({ month: g.nombre, desktop: countGroup(g.nombre) })
+            tempArray.push({ grupi: g.nombre, cantidad: countGroup(g.nombre) })
         })
         setThisdata(tempArray)
     }, [grupos, paquetes])
 
     return (
-        <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+        <ChartContainer config={chartConfig} className="min-h-[200px] h-[250px] w-full">
             <BarChart accessibilityLayer data={thisdata}>
                 <CartesianGrid vertical={false} />
                 <XAxis
-                    dataKey="month"
+                    dataKey="grupi"
                     tickLine={false}
-                    tickMargin={10}
-                    axisLine={false}
-                    tickFormatter={(value) => value.slice(0, 3)}
+                    tickMargin={1}
+                    axisLine={true}
+                    tickFormatter={(value) => value}
                 />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-                <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+                <Bar dataKey="cantidad" fill="#3b82f6" radius={4} />
+                
             </BarChart>
         </ChartContainer>
     )
