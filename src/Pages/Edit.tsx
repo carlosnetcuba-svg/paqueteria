@@ -6,7 +6,7 @@ import { DPkgCreate } from '@/Dialogs/DPkgCreate'
 import { DPkgDelete } from '@/Dialogs/DPkgDelete'
 import { Link } from 'react-router-dom'
 import { DGroupDel } from '@/Dialogs/DGroupDel'
-import { FilePlusCorner } from 'lucide-react'
+import { FilePlusCorner, PackageSearch } from 'lucide-react'
 
 
 const Edit = () => {
@@ -15,6 +15,7 @@ const Edit = () => {
                   <div className='grid gap-3'>
 
                         <ul className='flex flex-col gap-3 sm:gap-6'>
+                              <Link to={"/"}><CreateLinkToRastrearPaquete></CreateLinkToRastrearPaquete></Link>
                               <DGroupCreate></DGroupCreate>
 
                               <DPkgCreate></DPkgCreate>{/* Crea un paquete*/}
@@ -54,6 +55,25 @@ function CreateLinkToSubirFile() {
                         </ItemTitle>
                         <ItemDescription>
                               Sube un archivo de texto con los paquetes a crear
+                        </ItemDescription>
+                  </ItemContent>
+
+            </Item>)
+
+}
+
+function CreateLinkToRastrearPaquete() {
+      return (
+
+            <Item className="hover:bg-gray-300 " variant="outline">
+                  <ItemMedia variant="icon">
+                       <PackageSearch />
+                  </ItemMedia>
+                  <ItemContent>
+                        <ItemTitle>Web del cliente 
+                        </ItemTitle>
+                        <ItemDescription>
+                              Entra por la pagina de los clientes
                         </ItemDescription>
                   </ItemContent>
 
