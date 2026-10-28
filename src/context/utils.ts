@@ -26,7 +26,7 @@ export const  etapas :Etapa[] = [
 ]
 export const  etapasparafiltrar :Etapa[] = [
 
-  { label: "Ver Todas", value:  0},
+ 
   { label: "Almacen Miami", value:  10},
   { label: "Montaje en Contenedor", value: 20 },
   { label: "Contenedor en puerto de miami", value: 30 },
