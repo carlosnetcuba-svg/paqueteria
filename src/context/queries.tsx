@@ -179,7 +179,19 @@ try{
 console.log("EliminaGrupo")
 const  { data,error } = await supabasecl.from('grupo').delete().eq('nombre', grupo).select()
 console.log( data,error)
- return  { data:"", error:"" }
+ return  { data:data, error:error }
+}catch(e){
+  console.error(e)
+     return {error:"Catch Error here",data:""}
+}
+ 
+},EliminaPaquete:async (realid:string)=>{
+
+try{
+console.log("EliminaPaquete")
+const  { data,error } = await supabasecl.from('paquete').delete().eq('realid', realid).select()
+console.log( data,error)
+ return  { data:data, error:error }
 }catch(e){
   console.error(e)
      return {error:"Catch Error here",data:""}

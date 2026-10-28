@@ -65,7 +65,7 @@ console.log("ERROR:",error)
 
 setOpen(false)
 
-if(!error){
+if(!error && data){
   toast.add({
   title: "Tarea completada",
   description: `Se elimino el grupo ${g} y sus paquete(s)` ,
