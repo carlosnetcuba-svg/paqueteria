@@ -29,6 +29,7 @@ export const GlobalContextProvider=({children})=>{
            SetLoading(false)
         }
           async function hacerFetchGrupos(){
+            console.log("se hara fetch a los grupos")
             const {error,data}=await Supabasequeries.ObtenerTodosGrupos()    
           if(error){SetErrorg(error);console.error(error); }
           else if(data){
@@ -139,7 +140,7 @@ export const GlobalContextProvider=({children})=>{
 
     return (
         <GlobalContext.Provider value={{session,iniciarsesion,cerrarsession,
-        paquetes,grupos,loading,loadingg,error,errorg,reloadfetch}}>
+        paquetes,grupos,hacerFetchGrupos,loading,loadingg,error,errorg,reloadfetch}}>
             {children}
         </GlobalContext.Provider>
     );

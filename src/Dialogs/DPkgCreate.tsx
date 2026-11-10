@@ -37,8 +37,6 @@ export function DPkgCreate({}:{}) {
 
   
   const [open, setOpen] = useState(false)
-  const {grupos}=useGlobal()
-  const {SetGrupos}=useGlobal()
   const [errorState,FormAction,isPending]= useActionState(
   
 

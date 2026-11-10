@@ -29,6 +29,7 @@ import { useActionState } from "react"
 import { Supabasequeries } from "@/context/queries"
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
 import { InboxIcon, LayersPlus } from "lucide-react"
+import { useGlobal } from "@/context/context"
 
 
 
@@ -37,7 +38,7 @@ import { InboxIcon, LayersPlus } from "lucide-react"
 
 export function DGroupCreate() {
 
-  
+  const {hacerFetchGrupos}=useGlobal()
   const [open, setOpen] = useState(false)
   const [errorState,FormAction,isPending]= useActionState(
 
@@ -70,6 +71,7 @@ if(data){
   title: "Tarea completada",
   description: `Se creo el grupo ${g}` ,
 })
+hacerFetchGrupos()
 return ""
 }
 if (typeof error === 'object' && error !== null && 'message' in error) {
