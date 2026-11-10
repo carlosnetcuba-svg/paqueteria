@@ -38,6 +38,7 @@ export function DPkgCreate({}:{}) {
   
   const [open, setOpen] = useState(false)
   const {grupos}=useGlobal()
+  const {SetGrupos}=useGlobal()
   const [errorState,FormAction,isPending]= useActionState(
   
 
@@ -57,9 +58,9 @@ export function DPkgCreate({}:{}) {
     if (!etapa || !grupo) {
       return "Faltan campos obligatorios" 
     }
-   if (!grupos.some((g) => g.nombre === grupo)) {
-      return "El grupo designado no existe " 
-   }
+  // if (!grupos.some((g) => g.nombre === grupo)) {
+      //return "El grupo designado no existe " FETCH FROM API O RELOAD GRUPOS
+  // }
     
     else{
       

@@ -58,9 +58,9 @@ export function DialogSubirNuevos({doneFn,paquetes}:{doneFn:Function,paquetes:st
     if (!etapa || !grupo) {
       return "Faltan campos obligatorios" 
     }
-   if (!grupos.some((g) => g.nombre === grupo)) {
-      return "El grupo designado no existe " 
-   }
+   //if (!grupos.some((g) => g.nombre === grupo)) {
+     // return "El grupo designado no existe "   FETCH FROM API O RELOAD GRUPOS
+   //}
     
     else{
       
