@@ -33,7 +33,10 @@ import { InboxIcon, PackagePlus, Trash } from "lucide-react"
 
 
 
+
 export function DPkgCreate({}:{}) {
+
+const { grupos } = useGlobal() 
 
   
   const [open, setOpen] = useState(false)
@@ -144,8 +147,13 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
 
             <Field>
               <Label htmlFor="name-1">Grupo</Label>
-              <Input id="name-1" name="grupo" placeholder="grupo..."
+              <Input id="name-1" name="grupo" placeholder="grupo..." list="grupos-list"
               />
+           <datalist id="grupos-list">
+         {grupos ? (
+          grupos.map((g) => <option key={g.id} value={g.nombre} />)
+         ) : null}
+</datalist>
             </Field>
             <Field>
               <Label htmlFor="username-1">Etapas</Label>

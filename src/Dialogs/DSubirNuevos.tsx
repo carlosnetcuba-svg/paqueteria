@@ -37,7 +37,7 @@ export function DialogSubirNuevos({doneFn,paquetes}:{doneFn:Function,paquetes:st
 
   
   const [open, setOpen] = useState(false)
-  const {grupos}=useGlobal()
+  const { grupos } = useGlobal() 
   const [errorState,FormAction,isPending]= useActionState(
   
 
@@ -122,9 +122,13 @@ description: typeof error === "string" ? error :"Ha ocurrido un error"
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Grupo</Label>
-              <Input id="name-1" name="grupo" placeholder="grupo34512222"  list="lista-grupos"
-            
+              <Input id="name-1" name="grupo" placeholder="grupo34512222"  list="grupos-list"
               />
+                   <datalist id="grupos-list">
+         {grupos ? (
+          grupos.map((g) => <option key={g.id} value={g.nombre} />)
+         ) : null}
+        </datalist>
           
             </Field>
             <Field>

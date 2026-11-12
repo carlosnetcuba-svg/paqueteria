@@ -19,6 +19,8 @@ export const GlobalContextProvider=({children})=>{
       const [errorg,SetErrorg]=useState<unknown>(null)
 
 
+ 
+
 
          async function hacerFetchpaquetes(){
             const {error,data}=await Supabasequeries.ObtenerTodosPaquetes()    
@@ -41,19 +43,28 @@ export const GlobalContextProvider=({children})=>{
 
 
       function reloadfetch(){
-        SetLoading(true)
+           console.log("se hara reload a los grupos")
+           if(session){
+          SetLoading(true)
         SetError(null)
          SetErrorg(null)
         hacerFetchpaquetes()
         hacerFetchGrupos()
       }
+       
+      }
 
 
     useEffect(()=>{  
+      console.log("▶ useEffect fetch ejecutado")
+      if(session){
         hacerFetchpaquetes()
         hacerFetchGrupos()
+      }
+        
        },[])
 
+    
 
 
 

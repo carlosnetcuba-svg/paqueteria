@@ -7,15 +7,21 @@ import { DPkgDelete } from '@/Dialogs/DPkgDelete'
 import { Link } from 'react-router-dom'
 import { DGroupDel } from '@/Dialogs/DGroupDel'
 import { FilePlusCorner, PackageSearch } from 'lucide-react'
+import { useGlobal } from '@/context/context'
 
 
 const Edit = () => {
+
+      const { grupos,reloadfetch } = useGlobal() 
+      if(!grupos||grupos.length==0){reloadfetch()}
+      
       return (
             <div >
                   <div className='grid gap-3'>
 
                         <ul className='flex flex-col gap-3 sm:gap-6'>
                               <Link to={"/"}><CreateLinkToRastrearPaquete></CreateLinkToRastrearPaquete></Link>
+                             
                               <DGroupCreate></DGroupCreate>
 
                               <DPkgCreate></DPkgCreate>{/* Crea un paquete*/}
